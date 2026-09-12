@@ -2,7 +2,9 @@
 
 Beispiel-Projekt für [Blume](https://github.com/haydenbleasel/blume), ein Markdown-first Dokumentations-Framework auf Basis von Astro und Vite: Markdown/MDX in `content/` ablegen, Blume generiert daraus eine fertige Docs-Site mit Navigation, Suche, Theming und Komponenten-Bibliothek.
 
-**Live:** https://cbossi.github.io/blume-playground/
+**Local Dev:** http://localhost:4321
+
+**Deployment:** https://cbossi.github.io/blume-playground/
 
 ## Verwendung
 
