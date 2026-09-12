@@ -12,6 +12,12 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+# Build und Deploy sind getrennte Jobs (jeweils eigener, frischer Runner):
+# der Build-Job lädt dist/ als Pages-Artefakt hoch, der Deploy-Job holt es
+# von dort und veröffentlicht es — er braucht daher weder Checkout noch Build.
+# Vorteile der Trennung: Protection Rules am github-pages-Environment
+# blockieren nur den Deploy, und ein fehlgeschlagener Deploy lässt sich
+# re-runnen, ohne neu zu bauen.
 jobs:
   build:
     runs-on: ubuntu-latest
