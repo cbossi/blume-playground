@@ -6,4 +6,8 @@ export default defineConfig({
   content: {
     root: "content",
   },
+  deployment: {
+    site: "https://cbossi.github.io",
+    base: "/blume-playground",
+  },
 });
