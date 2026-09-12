@@ -1,0 +1,88 @@
+---
+title: Komponenten
+description: Cards, Steps, Tabs, Accordions, Badges und File-Trees — direkt in MDX, ohne Imports.
+---
+
+Blume bringt eine fertige Komponenten-Bibliothek mit, die in jeder `.mdx`-Seite **ohne Imports** verfügbar ist. Hier die wichtigsten im Einsatz.
+
+## Cards
+
+Für Landing Pages und "Weiter geht's"-Abschnitte:
+
+<CardGroup cols={2}>
+  <Card title="Schnellstart" href="/quickstart" icon="rocket">
+    Installation und erste Schritte.
+  </Card>
+  <Card title="Ohne Link" icon="lightbulb">
+    Ohne `href` ist die Card nicht klickbar — gut für reine Info-Kacheln.
+  </Card>
+</CardGroup>
+
+## Steps
+
+Nummerierte Abläufe, bei denen die Reihenfolge zählt:
+
+<Steps>
+  <Step title="Datei anlegen">Eine `.mdx`-Datei in `content/` ablegen.</Step>
+  <Step title="Frontmatter schreiben">Mindestens `title` setzen.</Step>
+  <Step title="Speichern">Hot Reload zeigt die Seite sofort an.</Step>
+</Steps>
+
+## Tabs
+
+Gleichwertige Varianten nebeneinander — z. B. OS-spezifische Befehle. Tabs mit gleichem Titel schalten seitenweit synchron um:
+
+<Tabs>
+  <Tab title="macOS / Linux">
+    ```bash
+    rm -rf dist
+    ```
+  </Tab>
+  <Tab title="Windows">
+    ```powershell
+    Remove-Item -Recurse -Force dist
+    ```
+  </Tab>
+</Tabs>
+
+## Accordion
+
+Für optionale Details, die die Seite nicht aufblähen sollen:
+
+<Accordion>
+  <AccordionItem title="Was passiert unter der Haube?">
+    Die Blume CLI scannt den Content-Ordner, baut einen Content-Graph und
+    generiert daraus ein Astro-Projekt unter `.blume/`, das sie für Dev und
+    Build verwendet.
+  </AccordionItem>
+  <AccordionItem title="Brauche ich React?">
+    Nein — die Kern-Komponenten sind React-frei. React wird nur aktiv, wenn du
+    eigene Islands hinzufügst.
+  </AccordionItem>
+</Accordion>
+
+## Badges
+
+Status und Metadaten inline markieren:
+
+<Badge>Stable</Badge> <Badge variant="accent">New</Badge> <Badge variant="success">Passing</Badge> <Badge variant="warning">Beta</Badge> <Badge variant="danger">Deprecated</Badge>
+
+## File tree
+
+Projekt-Strukturen übersichtlich darstellen:
+
+<FileTree>
+
+- content/
+  - index.mdx
+  - quickstart.mdx
+  - guides/
+    - meta.ts
+    - komponenten.mdx
+- blume.config.ts
+
+</FileTree>
+
+:::tip
+Die vollständige Liste (CodeGroup, Frame, Tooltip, Type Tables, Diff u. v. m.) steht in der offiziellen Blume-Doku unter `node_modules/blume/docs/content/components.mdx`.
+:::

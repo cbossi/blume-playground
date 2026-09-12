@@ -1,0 +1,60 @@
+---
+title: Navigation
+description: Wie Blume die Sidebar aus der Ordnerstruktur ableitet — und wie man sie mit meta.ts steuert.
+---
+
+Blume leitet die Navigation komplett aus dem Dateisystem ab: Jeder Ordner unter `content/` wird zur Sidebar-Gruppe, jede Datei zur Seite. Konfiguration ist optional.
+
+## Automatische Reihenfolge
+
+Ohne weitere Angaben sortiert Blume so:
+
+1. `index`-Seite zuerst
+2. Numerische Präfixe (`01-quickstart.mdx` → Slug `quickstart`)
+3. Alphabetisch
+
+## Reihenfolge pro Seite
+
+Im Frontmatter der Seite:
+
+```mdx
+---
+title: Schnellstart
+sidebar:
+  order: 1
+  icon: rocket
+---
+```
+
+## Gruppen mit meta.ts
+
+Eine `meta.ts` neben den Seiten konfiguriert die Gruppe — voll typisiert dank `defineMeta`. Genau so macht es dieses Projekt für die Guides-Gruppe:
+
+```ts content/guides/meta.ts lineNumbers
+import { defineMeta } from "blume";
+
+export default defineMeta({
+  title: "Guides",
+  icon: "book-open",
+  order: 2,
+  pages: ["inhalte-schreiben", "komponenten", "navigation"],
+});
+```
+
+| Feld | Wirkung |
+| --- | --- |
+| `title` | Label der Gruppe (Default: humanisierter Ordnername) |
+| `icon` | Icon neben dem Label ([Lucide](https://lucide.dev/icons)-Namen) |
+| `order` | Position unter den Geschwistern |
+| `pages` | Explizite Reihenfolge der Kinder (per Slug) |
+| `collapsed` | Ob die Gruppe eingeklappt startet |
+
+Seiten, die in `pages` fehlen, erscheinen trotzdem — nach den gelisteten.
+
+:::note
+`meta.ts` ist ein echtes TypeScript-Modul: Statt eines Objekts kann auch eine (async) Funktion exportiert werden, die die Meta-Daten zur Scan-Zeit berechnet.
+:::
+
+## Gruppen ohne URL-Segment
+
+Ein Ordnername in Klammern gruppiert Seiten in der Sidebar, ohne die URL zu verändern: `content/(intern)/setup.mdx` liegt unter `/setup`.

@@ -1,0 +1,59 @@
+---
+title: Schnellstart
+description: In wenigen Minuten vom leeren Ordner zur laufenden Docs-Site.
+sidebar:
+  order: 1
+  icon: rocket
+---
+
+So bringst du dieses Playground-Projekt (oder ein neues Blume-Projekt) zum Laufen.
+
+<Steps>
+  <Step title="Abhängigkeiten installieren">
+    Blume ist die einzige Dependency:
+
+    ```package-install
+    npm install
+    ```
+  </Step>
+  <Step title="Dev-Server starten">
+    ```bash
+    npm run dev
+    ```
+
+    Blume scannt `content/`, baut den Content-Graph und startet Vite mit Hot Reload.
+  </Step>
+  <Step title="Seite schreiben">
+    Lege eine neue `.mdx`-Datei in `content/` ab — sie erscheint automatisch in der Sidebar:
+
+    ```mdx content/meine-seite.mdx
+    ---
+    title: Meine Seite
+    description: Kurze Beschreibung für Suche und SEO.
+    ---
+
+    # Hallo Blume
+
+    Inhalt wie gewohnt in **Markdown**.
+    ```
+  </Step>
+  <Step title="Produktions-Build">
+    ```bash
+    npm run build
+    ```
+
+    Das Ergebnis landet als statisches HTML in `dist/` — deploybar auf jedem Static Host.
+  </Step>
+</Steps>
+
+## Nützliche Befehle
+
+| Befehl | Zweck |
+| --- | --- |
+| `npm run dev` | Dev-Server mit Hot Reload |
+| `npm run build` | Statischer Produktions-Build nach `dist/` |
+| `npm run doctor` | Prüft das Projekt auf Konfigurations-Probleme |
+
+:::tip
+Jede Seite ist auch als rohes Markdown erreichbar — einfach `.md` an die URL anhängen. Zusätzlich generiert Blume `llms.txt` für KI-Tools.
+:::

@@ -1,10 +1,42 @@
 ---
-title: Introduction
-description: Welcome to your new Blume docs.
+title: Einführung
+description: Willkommen im Blume Playground — ein Beispiel-Projekt zum Ausprobieren von Blume.
+sidebar:
+  order: 0
 ---
 
-# Introduction
+Willkommen im **Blume Playground** — ein minimales Beispiel-Projekt für [Blume](https://github.com/haydenbleasel/blume), ein Markdown-first Dokumentations-Framework auf Basis von Astro und Vite.
 
-Welcome to **Blume** — markdown-first docs powered by Astro and Vite.
+Du schreibst nur Markdown bzw. MDX in den Ordner `content/`, Blume generiert daraus eine fertige Docs-Site: Navigation, Suche, Theming und eine Komponenten-Bibliothek — ganz ohne eigenes App-Boilerplate.
 
-Edit `content/index.mdx` to get started, then run `blume dev`.
+<CardGroup cols={2}>
+  <Card title="Schnellstart" href="/quickstart" icon="rocket">
+    Dev-Server starten und die erste Seite schreiben.
+  </Card>
+  <Card title="Inhalte schreiben" href="/guides/inhalte-schreiben" icon="pencil">
+    Frontmatter, Callouts, Code-Blöcke und Diagramme.
+  </Card>
+  <Card title="Komponenten" href="/guides/komponenten" icon="folder">
+    Cards, Steps, Tabs, Accordions und mehr — ohne Imports.
+  </Card>
+  <Card title="Navigation" href="/guides/navigation" icon="menu">
+    Sidebar-Struktur über Ordner und `meta.ts` steuern.
+  </Card>
+</CardGroup>
+
+## Wie dieses Projekt aufgebaut ist
+
+```txt
+blume-playground/
+├── blume.config.ts   → Titel, Beschreibung, Content-Root
+├── content/          → alle Doku-Seiten (Markdown/MDX)
+│   ├── index.mdx     → diese Seite
+│   ├── quickstart.mdx
+│   └── guides/       → wird automatisch zur Sidebar-Gruppe
+│       └── meta.ts   → Titel & Reihenfolge der Gruppe
+└── package.json
+```
+
+:::note
+Blume generiert unter `.blume/` ein verstecktes Astro-Projekt und regeneriert es bei jedem Lauf — diesen Ordner nie von Hand bearbeiten.
+:::
