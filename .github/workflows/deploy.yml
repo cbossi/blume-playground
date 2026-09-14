@@ -33,7 +33,7 @@ jobs:
         run: npm ci
 
       - name: Build site
-        run: npm run build
+        run: npm run build --strict
         env:
           DEPLOY_TARGET: github-pages
 
