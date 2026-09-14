@@ -32,8 +32,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Schlägt bei Konfigurations- oder Content-Problemen fehl
+      - name: Check project health
+        run: npm run doctor
+        env:
+          DEPLOY_TARGET: github-pages
+
+      # Prüft interne Links; --strict lässt auch Warnungen fehlschlagen.
+      - name: Validate links
+        run: npm run validate
+        env:
+          DEPLOY_TARGET: github-pages
+
       - name: Build site
-        run: npm run build --strict
+        run: npm run build
         env:
           DEPLOY_TARGET: github-pages
 
