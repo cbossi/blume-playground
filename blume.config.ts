@@ -9,7 +9,7 @@ export default defineConfig({
   content: {
     root: "content",
   },
-  deployment: githubPages
+  deployment: process.env.DEPLOY_TARGET === "github-pages"
     ? {
         site: "https://cbossi.github.io",
         base: "/blume-playground",
